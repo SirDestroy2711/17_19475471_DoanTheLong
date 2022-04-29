@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="dangki" onsubmit="KiemTra();">
+
+        <label class="col-sm-12" for="name" >Họ tên</label>
+        <input class="col-sm-8" type="text" placeholder="Nhập họ tên" id="name"><br>
+        <span id="errorname" style="color: red;">*</span>
+
+        <label class="col-sm-12" for="number">Số áo</label>
+        <input  class="col-sm-8" type="text" placeholder="Nhập số áo đội tuyển" id="number"><br>
+        <span id="errornumber" style="color: red;">*</span>
+
+        <label for="club" class="col-sm-12">Câu lạc bộ</label>
+        <input class="col-sm-8" type="text" placeholder="Câu lạc bộ của bạn" id="club"><br>
+        <span id="errorclub" style="color: red;">*</span>
+
+        <label for="date" class="col-sm-12">Ngày tập trung</label>
+        <input type="date" class="col-sm-8" id="date"><br>
+        <span id="errordate" style="color: red;">*</span>
+
+        <label for="phone" class="col-sm-12">Số điện thoại</label>
+        <input type="text" placeholder="09xx-xxx-xxx" class="col-sm-8" id="phone"><br>
+        <span id="errorphone" style="color: red;">*</span>
+
+        <label for="picture" class="col-sm-12">Ảnh đại diện</label>
+        <input type="file" class="col-sm-8" id="picture"><br>
+        <span id="errorpicture" style="color: red;">*</span>
+    </div>
+
+    <button type="submit" class="col-sm-12 bg" onclick="KiemTra();">Lưu</button>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function KiemTra(){
+            var name= document.getElementById('name').value;
+            var errorname = document.getElementById('errorname');
+            var regexname=/^[A-Z][A-z]{1,20}$/;
+
+            var number = document.getElementById('number').value;
+            var errorname = document.getElementById('errornumber');
+            var regexnumber=/^[1-9]{1}$/;
+
+            var club = document.getElementById('club').value;;
+            var errorclub = document.getElementById('errorclub');
+            var regexclub=/^[A-Z][A-z 0-9]{1,20}$/;
+
+            // var date = document.getElementById('date').value;
+            // var errordate = document.getElementById('errordate')
+            // var regexdate=
+
+            var phone = document.getElementById('phone').value;
+            var errorphone = document.getElementById('errorphone');
+            var regexphone=/^09[0-9]{8}/;
+
+            var picture = document.getElementById('picture').value;
+            var errorpicture= document.getElementById('errorpicture');
+
+
+            if(name==""||name==null){
+                errorname.innerHTML="Không được để trống";
+            }else if(!regexname.test(name)){
+                errorname.innerHTML="Nhập sai dữ liệu";
+            }else{
+                errorname.innerHTML="*";
+                return name;
+            }
+
+            if(number==""||number==null){
+                errornumber.innerHTML="Không được để trống";
+            }else if(!regexnumber.test(number)){
+                errornumber.innerHTML="Nhập sai dữ liệu";
+            }else{
+                errornumber.innerHTML="*";
+                return number;
+            }
+
+            if(club==""||club==null){
+                errorclub.innerHTML="Không được để trống";
+            }else if(!regexclub.test(club)){
+                errorclub.innerHTML="Nhập sai dữ liệu";
+            }else{
+                errorclub.innerHTML="*";
+                return club;
+            }
+
+            if(phone==""||phone==null){
+                errorphone.innerHTML="Không được để trống";
+            }else if(!regexphone.test(phone)){
+                errorphone.innerHTML="Nhập sai dữ liệu";
+            }else{
+                errorphone.innerHTML="*";
+                return phone;
+            }
+
+            if(picture==""||picture==null){
+                errorpicture.innerHTML="Không được để trống";
+            }else {
+                errorphone.innerHTML="*";
+                return phone;
+            }
+
+            if(regexname.test(name)&&regexphone.test(phone)&&regexnumber.test(number)&&regexclub.test(club)&&picture!=null){
+                window.location.href="/index.html";
+            }
+        }
+    </script>
+</body>
+</html>
